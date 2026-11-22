@@ -1,4 +1,4 @@
-# SECDNS — cryptographic hardening of the recursive→authoritative DNS hop
+# SECDNS: cryptographic hardening of the recursive→authoritative DNS hop
 
 A proof-of-concept for **Challenge 2 (CSC 4308)**. SECDNS ("TriGate") secures the
 recursive-resolver ↔ authoritative-server hop with three sequential gates:
