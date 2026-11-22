@@ -1,0 +1,70 @@
+{
+  "generated": 1795201298,
+  "scenarios": [
+    {
+      "id": "S1",
+      "title": "Off-path forged answer (Kaminsky / SAD DNS)",
+      "threat": "off-path spoofing of matching reply",
+      "gap": "G1",
+      "before": "cache poisoned, www.example.test. -> ['6.6.6.6']",
+      "after": "off-path forgery never enters TLS session; www.example.test. -> ['10.53.0.10']",
+      "secdns_stops": true
+    },
+    {
+      "id": "S2",
+      "title": "Rogue server, wrong TLS key (on-path MITM)",
+      "threat": "on-path redirect to attacker endpoint",
+      "gap": "G1",
+      "before": "weak DNS has no server-key check; would accept rogue endpoint",
+      "after": "TLS pin mismatch rejected: server SPKI does not match signed descriptor",
+      "secdns_stops": true
+    },
+    {
+      "id": "S3",
+      "title": "Tampered service descriptor (bootstrap MITM)",
+      "threat": "modify descriptor in untrusted bootstrap",
+      "gap": "G3",
+      "before": "weak DNS has no signed descriptor; attacker redirect undetected",
+      "after": "Gate A rejects: zone-key signature over descriptor invalid",
+      "secdns_stops": true
+    },
+    {
+      "id": "S4",
+      "title": "Out-of-bailiwick injection (MaginotDNS)",
+      "threat": "smuggle off-zone records via authenticated peer",
+      "gap": "G2",
+      "before": "weak DNS caches smuggled out-of-zone RRset (www.bank.test -> 6.6.6.6)",
+      "after": "Gate C rejects: an answer/authority name is outside the zone",
+      "secdns_stops": true
+    },
+    {
+      "id": "S5",
+      "title": "High-cost answer (KeyTrap-style work exhaustion)",
+      "threat": "force expensive per-response processing",
+      "gap": "G4",
+      "before": "weak DNS processes all 500 records (unbounded work)",
+      "after": "Gate C rejects after budget: answer exceeds record-count budget (work=65)",
+      "secdns_stops": true
+    },
+    {
+      "id": "S6",
+      "title": "In-session answer replay",
+      "threat": "replay an earlier answer",
+      "gap": "G3",
+      "before": "weak DNS has no per-query nonce inside a channel",
+      "after": "answer nonce bound to the exact outstanding query; mismatched nonce rejected",
+      "secdns_stops": true
+    },
+    {
+      "id": "S7",
+      "title": "Expired descriptor",
+      "threat": "use a revoked/expired key binding",
+      "gap": "G3",
+      "before": "weak DNS has no key lifetime; stale redirect usable indefinitely",
+      "after": "Gate A rejects: delegation outside its validity window",
+      "secdns_stops": true
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

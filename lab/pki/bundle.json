@@ -1,0 +1,19 @@
+{
+  "delegation": {
+    "zone": "example.test.",
+    "zone_key": "Lbve11r0+/O3O4J91Wrmg13q8VOj197VNDckkHppzbc=",
+    "not_before": 1795200997,
+    "not_after": 1797793297,
+    "signature": "1Jo5j8O94tIBYBj21IGMZnO1j3ct3tC8BUFb+W2e6NiOc/nxQea/kcld9xETnjkAuVw0rTx4hmJ3TbAnuyMtDg=="
+  },
+  "descriptor": {
+    "zone": "example.test.",
+    "host": "127.0.0.1",
+    "port": 8853,
+    "spki_pin": "pi9ljaxJHhssmmsCO/PGpmlbgVz+EvaCGtTPJKPAMDI=",
+    "proto_version": 1,
+    "not_before": 1795200997,
+    "not_after": 1797793297,
+    "signature": "Z6CKVxjKQEtJNr6pASIH9tOTeiMKhvnG1ggEtVnE8zTo28mUD0HUCgYUZCMzqjwyNxrfQ/KsMX928wMrNalEBg=="
+  }
+}
